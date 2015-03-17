@@ -26,6 +26,19 @@ module MMS
       end
       group_list
     end
+    
+    def group_create(name)
+      MMS::Resource::Group.create(name)
+      group_list = []
+      client.get('/groups').each do |group|
+        g = MMS::Resource::Group.new
+        g.set_client(client)
+        g.set_data(group)
+
+        group_list.push g
+      end
+      group_list
+    end
 
     # @return [Array<MMS::Resource::Host>]
     def hosts

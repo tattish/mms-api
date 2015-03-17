@@ -158,6 +158,14 @@ module MMS
         end
       end
 
+      subcommand 'create', 'Group create' do
+        parameter '[name]', 'Group name to create', :default => nil
+       
+        def execute
+          agent.group_create(name)
+          print(MMS::Resource::Group.table_header, groups)
+        end
+      end
     end
 
     class MMS::CLI::Command::Hosts < MMS::CLI::Command

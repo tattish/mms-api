@@ -73,6 +73,22 @@ module MMS
       MMS::Resource::Cluster.find(@client, @id, id)
     end
 
+    # @param [String] name
+    # @return [JSON]
+    def create(name)
+      data = {
+        :name => name  
+      }    
+      @client.post('/groups',data)
+    end
+    
+    # @param [String] id
+    # @return [JSON]
+    def delete(id)  
+      @client.delete("/groups/#{id}")
+    end
+
+    
     # @param [String] id
     # @return [MMS::Resource::Snapshot]
     def find_snapshot(id)
