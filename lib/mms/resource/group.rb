@@ -84,8 +84,8 @@ module MMS
     
     # @param [String] id
     # @return [JSON]
-    def delete(id)  
-      @client.delete("/groups/#{id}")
+    def delete()
+      @client.delete("/groups/#{@id}")
     end
 
     

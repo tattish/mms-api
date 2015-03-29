@@ -36,6 +36,17 @@ module MMS
       _request(@url + path, @username, @apikey, data, method)
     end
 
+    # @param [String] path
+    # @param [Hash] data
+    # @return [Hash]
+    def delete(path)
+      method = {
+        :name => "DELETE",
+        :http_method => Net::HTTP::Delete
+      }
+      _request(@url + path, @username, @apikey, nil, method)
+    end
+
     private
 
     # @param [String] path

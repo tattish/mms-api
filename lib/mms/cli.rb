@@ -160,9 +160,18 @@ module MMS
 
       subcommand 'create', 'Group create' do
         parameter '[name]', 'Group name to create', :default => nil
-       
+
         def execute
           agent.group_create(name)
+          print(MMS::Resource::Group.table_header, groups)
+        end
+      end
+
+      subcommand 'delete', 'Group delete' do
+        parameter '[name]', 'Group name to delete', :default => nil
+
+        def execute
+          agent.group_delete(name)
           print(MMS::Resource::Group.table_header, groups)
         end
       end
